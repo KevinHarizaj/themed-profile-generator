@@ -1,4 +1,4 @@
-import { randomName } from '../lib/cjs/index'
+import { randomName } from '../lib/cjs/random-name'
 test("Testing 'random name' function", () => {
     expect([
         'Dwight Schrute',
