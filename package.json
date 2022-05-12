@@ -2,13 +2,13 @@
     "name": "themed-profile-generator",
     "version": "1.0.0",
     "description": "Create randomly generated profiles based on themes.",
-    "main": "./lib/esm/index.js",
-    "types": "lib/esm/index.d.ts",
+    "main": "./lib/cjs/index.js",
+    "types": "lib/cjs/index.d.ts",
     "module": "./lib/esm/index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
         "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
-        "prepublish": "npm run build"
+        "prepublish": "npm run test && npm run build",
+        "test": "jest --coverage"
     },
     "repository": {
         "type": "git",
@@ -18,8 +18,7 @@
         "lib/"
     ],
     "keywords": [
-        "profile",
-        "generator",
+        "profile generator",
         "themed",
         "fun"
     ],
@@ -30,6 +29,9 @@
     },
     "homepage": "https://github.com/KevinHarizaj/themed-profile-generator#readme",
     "devDependencies": {
+        "@types/jest": "^27.5.1",
+        "jest": "^28.1.0",
+        "ts-jest": "^28.0.2",
         "typescript": "^4.6.4"
     }
 }
