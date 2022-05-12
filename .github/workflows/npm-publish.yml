@@ -2,10 +2,11 @@ name: Publish to NPM
 
 on:
     push:
-        - main
+        branches:
+            - main
 
 jobs:
-    publish-to-npm:
+    publish:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v1
