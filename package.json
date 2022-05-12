@@ -6,7 +6,8 @@
     "types": "lib/cjs/index.d.ts",
     "module": "./lib/esm/index.js",
     "scripts": {
-        "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
+        "build": "npm run clean && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
+        "clean": "rm -rf lib",
         "prepublish": "npm run test && npm run build",
         "test": "jest --coverage"
     },
