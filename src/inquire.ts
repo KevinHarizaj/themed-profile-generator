@@ -1,3 +1,4 @@
+const profileData = require('./random-profiles')
 const inquirer = require('inquirer')
 
 module.exports = {
@@ -24,13 +25,13 @@ module.exports = {
                 name: 'theme',
                 type: 'list',
                 message: 'Which theme do you want? (Use arrow keys)',
-                choices: ['Middle Ages', 'Sci-Fi Future']
+                choices: profileData.getThemeNames()
             }
         ]
         return inquirer.prompt(questions)
     },
     askNumberOfProfiles: () => {
-        const maximumProfiles = 5
+        const maximumProfiles = 100
         const questions: object[] = [
             {
                 name: 'number',

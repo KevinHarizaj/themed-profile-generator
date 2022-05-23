@@ -1,6 +1,8 @@
 //import { randomName } from './random-name'
 //export { randomName }
 
+const tpg = require('./random-profiles')
+
 const chalk = require('chalk') // string styling
 const clear = require('clear') // clearing the window
 const figlet = require('figlet') // ASCII strings
@@ -29,10 +31,12 @@ async function run(): Promise<void> {
     console.log('Number of profiles: ', numberOfProfiles.number)
 
     // generate profiles here
-    // ...
+    const profiles = await tpg.generateProfiles(theme, numberOfProfiles)
+
+    console.log('profiles:', profiles)
 
     // dummy profiles
-    const profiles = [
+    const dummyProfiles = [
         {
             name: 'Tom',
             age: 32,
