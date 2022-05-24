@@ -1,6 +1,3 @@
-//import { randomName } from './random-name'
-//export { randomName }
-
 const tpg = require('./random-profiles')
 
 const chalk = require('chalk') // string styling
@@ -30,24 +27,8 @@ async function run(): Promise<void> {
     const numberOfProfiles = await cmdPrompt.askNumberOfProfiles()
     console.log('Number of profiles: ', numberOfProfiles.number)
 
-    // generate profiles here
-    const profiles = await tpg.generateProfiles(theme, numberOfProfiles)
-
-    console.log('profiles:', profiles)
-
-    // dummy profiles
-    const dummyProfiles = [
-        {
-            name: 'Tom',
-            age: 32,
-            job: 'Photographer'
-        },
-        {
-            name: 'Elsa',
-            age: 23,
-            job: 'Princess'
-        }
-    ]
+    // Generate profiles
+    const profiles = tpg.generateProfiles(theme.theme, numberOfProfiles.number)
 
     const jsonString = JSON.stringify(profiles)
     fs.writeFile('./tpg.json', jsonString, (err: any) => {
