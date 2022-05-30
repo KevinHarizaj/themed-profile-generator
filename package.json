@@ -10,7 +10,7 @@
     },
     "scripts": {
         "start": "npm run build && npm run global",
-        "watch": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+        "watch": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' --files src/index.ts",
         "global": "sudo npm i -g && tpg-script",
         "build": "npm run clean && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
         "clean": "rm -rf lib",
@@ -22,7 +22,8 @@
         "url": "git+https://github.com/KevinHarizaj/themed-profile-generator.git"
     },
     "files": [
-        "lib/"
+        "lib/",
+        "src/types/common/"
     ],
     "keywords": [
         "profile generator",

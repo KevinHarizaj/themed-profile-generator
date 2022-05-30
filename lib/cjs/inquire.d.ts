@@ -1,2 +1,2 @@
-declare const profileData: any;
+declare const rp: any;
 declare const inquirer: any;
