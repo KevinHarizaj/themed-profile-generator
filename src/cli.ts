@@ -54,7 +54,7 @@ const generate = (themeIdx: any, numberOfProfiles: any) => {
     const isValidNumberOfProfiles =
         !isNaN(parseInt(numberOfProfiles)) &&
         parseInt(numberOfProfiles) > 0 &&
-        parseInt(numberOfProfiles) > maximumProfiles
+        parseInt(numberOfProfiles) < maximumProfiles
 
     if (isValidTheme && isValidNumberOfProfiles) {
         const theme: Theme = themeNames()[themeIdx] as Theme
@@ -97,16 +97,14 @@ program
     .command('generate')
     .description('Generate a number of random profiles of a certain theme')
     .option('-t, --theme <number>', 'Specify the theme', '0')
-    .option(
-        '-n, --number-of-profiles <number>',
-        'Specify the number of profiles',
-        '3'
-    )
-    .action(generate)
+    .option('-p, --profiles <number>', 'Specify the number of profiles', '3')
+    .action((options: any) => {
+        generate(options.theme, options.profiles)
+    })
 
 program
     .command('themes')
     .description('List all available themes')
     .action(listThemes)
 
-program.parse()
+program.parse(process.argv)
