@@ -1,5 +1,6 @@
-const rp = require('./random-profile')
 const inquirer = require('inquirer')
+
+import themeName from './theme-names'
 
 module.exports = {
     askUsername: () => {
@@ -25,7 +26,7 @@ module.exports = {
                 name: 'theme',
                 type: 'list',
                 message: 'Which theme do you want? (Use arrow keys)',
-                choices: rp.getThemeNames()
+                choices: themeName()
             }
         ]
         return inquirer.prompt(questions)

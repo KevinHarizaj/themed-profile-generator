@@ -1,4 +1,5 @@
-const data = require('./profile-data.json')
+import data from './profile-data.json'
+import { Theme, Profile } from './types'
 
 const getRandomInt = (max: number, min: number = 0): number => {
     return Math.floor(Math.random() * (max - min) + min)
@@ -22,8 +23,8 @@ const getRandomProfile = (theme: Theme): Profile => {
         ]
 
     const age: Profile['age'] = getRandomInt(
-        data['themes'][theme]['minAge'],
-        data['themes'][theme]['maxAge']
+        data['themes'][theme]['maxAge'] + 1,
+        data['themes'][theme]['minAge']
     )
 
     const job: Profile['job'] =
@@ -34,11 +35,4 @@ const getRandomProfile = (theme: Theme): Profile => {
     return { firstName, lastName, sex, age, job }
 }
 
-const getThemeNames = (): Array<string> => {
-    return Object.keys(data['themes'])
-}
-
-module.exports = {
-    getThemeNames,
-    getRandomProfile
-}
+export default getRandomProfile

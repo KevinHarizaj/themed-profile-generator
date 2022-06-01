@@ -6,11 +6,11 @@
     "types": "lib/cjs/index.d.ts",
     "module": "./lib/esm/index.js",
     "bin": {
-        "tpg": "./bin/tpg-script"
+        "themed-profile-generator": "./bin/tpg-script"
     },
     "scripts": {
         "start": "npm run build && npm run global",
-        "watch": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' --files src/index.ts",
+        "watch": "nodemon --watch 'src/**/*.ts' --exec ts-node src/index.ts",
         "global": "sudo npm i -g && tpg-script",
         "build": "npm run clean && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
         "clean": "rm -rf lib",
@@ -22,8 +22,7 @@
         "url": "git+https://github.com/KevinHarizaj/themed-profile-generator.git"
     },
     "files": [
-        "lib/",
-        "src/types/common/"
+        "lib/"
     ],
     "keywords": [
         "profile generator",
@@ -39,7 +38,6 @@
     "devDependencies": {
         "@types/jest": "^27.5.1",
         "@types/node": "^17.0.35",
-        "i": "^0.3.7",
         "jest": "^28.1.0",
         "nodemon": "^2.0.16",
         "npm": "^8.10.0",
