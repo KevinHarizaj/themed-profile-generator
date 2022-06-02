@@ -33,12 +33,12 @@ const run = async (): Promise<void> => {
     console.log('Generating random profiles...')
 
     const jsonString = JSON.stringify(profiles)
-    fs.writeFile('./tpg.json', jsonString, (err: any) => {
+    fs.writeFile('./themed-profiles.json', jsonString, (err: any) => {
         if (err) {
             console.log('There was an error writing the file', err)
         } else {
             console.log(
-                `Successfully generated ${numberOfProfiles.number} '${theme.theme}' profile(s) and written to tpg.json`
+                `Successfully generated ${numberOfProfiles.number} '${theme.theme}' profile(s) and written to themed-profiles.json`
             )
         }
     })
@@ -64,12 +64,12 @@ const generate = (themeIdx: any, numberOfProfiles: any) => {
         console.log('Generating random profiles...')
 
         const jsonString = JSON.stringify(profiles)
-        fs.writeFile('./tpg.json', jsonString, (err: any) => {
+        fs.writeFile('./themed-profiles.json', jsonString, (err: any) => {
             if (err) {
                 console.log('There was an error writing the file', err)
             } else {
                 console.log(
-                    `Successfully generated ${numberOfProfiles} '${theme}' profile(s) and written to tpg.json`
+                    `Successfully generated ${numberOfProfiles} '${theme}' profile(s) and written to themed-profiles.json`
                 )
             }
         })
