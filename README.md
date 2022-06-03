@@ -22,7 +22,7 @@ Install themed-profile-generator with npm:
 `themedProfileGenerator(theme, numberOfProfiles)`
 
 -   `theme` - the theme name
--   `numberOfProfiles` - the number of profiles to be generated
+-   `numberOfProfiles` - the number of profiles to be generated, optional (default: 3)
 
 ```js
 import themedProfileGenerator from 'themed-profile-generator'
@@ -129,7 +129,3 @@ See our `CONTRIBUTING.md` for ways to get started. 🚀
 ## Contact
 
 If you have any feedback, please reach out to us at daniela-dottolo@gmx.at! 💌
-
-```
-
-```
