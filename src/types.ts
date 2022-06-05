@@ -7,3 +7,8 @@ export type Profile = {
 }
 
 export type Theme = 'Middle Ages' | 'Sci-Fi Future' | 'Crime'
+
+export type ThemeOptions = {
+    theme: string
+    profiles: string
+}

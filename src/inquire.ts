@@ -1,15 +1,14 @@
-const inquirer = require('inquirer')
-
+import inquirer from 'inquirer'
 import themeName from './theme-names'
 
-module.exports = {
+const cmdPrompt =  {
     askUsername: () => {
         const questions: object[] = [
             {
                 name: 'username',
                 type: 'input',
                 message: 'Enter your username to get your report:',
-                validate: function (value: any) {
+                validate: function (value: string) {
                     if (value.length) {
                         return true
                     } else {
@@ -40,7 +39,7 @@ module.exports = {
                 message:
                     'How many profiles do you want to be generated? Default:',
                 default: 3,
-                validate: function (value: any) {
+                validate: function (value: string) {
                     const isNumber = !isNaN(parseInt(value))
                     const isInRange =
                         parseInt(value) > 0 && parseInt(value) < maximumProfiles
@@ -55,3 +54,5 @@ module.exports = {
         return inquirer.prompt(questions)
     }
 }
+
+export default cmdPrompt
