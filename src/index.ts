@@ -3,7 +3,7 @@ import { Theme, Profile } from './types'
 
 const generateProfiles = (
     theme: Theme,
-    numberOfProfiles: number = 3
+    numberOfProfiles = 3
 ): Array<Profile> => {
     const profiles: Array<Profile> = []
 

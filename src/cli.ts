@@ -1,14 +1,15 @@
 import themeNames from './theme-names'
 import generateProfiles from './index'
 
-import { Theme } from './types'
+import {Theme, ThemeOptions} from './types'
 
-const chalk = require('chalk') // string styling
-const clear = require('clear') // clearing the window
-const figlet = require('figlet') // ASCII strings
-const program = require('commander') // command-line interface prompter
-const cmdPrompt = require('./inquire')
-const fs = require('fs')
+import chalk from 'chalk' // string styling
+import clear from 'clear' // clearing the window
+import figlet from 'figlet' // ASCII strings
+import { program } from 'commander' // command-line interface prompter
+import cmdPrompt from './inquire'
+import fs from 'fs'
+import ErrnoException = NodeJS.ErrnoException;
 
 const run = async (): Promise<void> => {
     clear()
@@ -33,7 +34,7 @@ const run = async (): Promise<void> => {
     console.log('Generating random profiles...')
 
     const jsonString = JSON.stringify(profiles)
-    fs.writeFile('./themed-profiles.json', jsonString, (err: any) => {
+    fs.writeFile('./themed-profiles.json', jsonString, (err: ErrnoException | null) => {
         if (err) {
             console.log('There was an error writing the file', err)
         } else {
@@ -44,7 +45,7 @@ const run = async (): Promise<void> => {
     })
 }
 
-const generate = (themeIdx: any, numberOfProfiles: any) => {
+const generate = (themeIdx: string, numberOfProfiles: string) => {
     const maximumProfiles = 100
     const isValidTheme =
         !isNaN(parseInt(themeIdx)) &&
@@ -57,14 +58,14 @@ const generate = (themeIdx: any, numberOfProfiles: any) => {
         parseInt(numberOfProfiles) < maximumProfiles
 
     if (isValidTheme && isValidNumberOfProfiles) {
-        const theme: Theme = themeNames()[themeIdx] as Theme
+        const theme: Theme = themeNames()[parseInt(themeIdx)] as Theme
 
         // Generate profiles
         const profiles = generateProfiles(theme, parseInt(numberOfProfiles))
         console.log('Generating random profiles...')
 
         const jsonString = JSON.stringify(profiles)
-        fs.writeFile('./themed-profiles.json', jsonString, (err: any) => {
+        fs.writeFile('./themed-profiles.json', jsonString, (err: ErrnoException | null) => {
             if (err) {
                 console.log('There was an error writing the file', err)
             } else {
@@ -98,7 +99,7 @@ program
     .description('Generate a number of random profiles of a certain theme')
     .option('-t, --theme <number>', 'Specify the theme', '0')
     .option('-p, --profiles <number>', 'Specify the number of profiles', '3')
-    .action((options: any) => {
+    .action((options: ThemeOptions) => {
         generate(options.theme, options.profiles)
     })
 
